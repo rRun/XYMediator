@@ -1,0 +1,90 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
+  - Cordova (4.1.1)
+  - JSPatch (1.0):
+    - JSPatch/Core (= 1.0)
+  - JSPatch/Core (1.0)
+  - LEETheme (1.0.7)
+  - Masonry (1.0.1)
+  - SocketRocket (0.5.1)
+  - weex (0.6.0):
+    - SocketRocket
+  - XY_NetWorkClient (1.0.1):
+    - AFNetworking
+  - XYMediator (0.0.1):
+    - XYMediator/XYBaseUI (= 0.0.1)
+    - XYMediator/XYCordova (= 0.0.1)
+    - XYMediator/XYLogger (= 0.0.1)
+    - XYMediator/XYMediatorCore (= 0.0.1)
+    - XYMediator/XYNetwork (= 0.0.1)
+    - XYMediator/XYPatchHelper (= 0.0.1)
+    - XYMediator/XYWeex (= 0.0.1)
+  - XYMediator/XYBaseUI (0.0.1):
+    - LEETheme (~> 1.0.7)
+    - Masonry (~> 1.0.1)
+  - XYMediator/XYCordova (0.0.1):
+    - Cordova (~> 4.1.1)
+  - XYMediator/XYLogger (0.0.1):
+    - CocoaLumberjack (~> 2.3.0)
+  - XYMediator/XYMediatorCore (0.0.1)
+  - XYMediator/XYNetwork (0.0.1):
+    - XY_NetWorkClient (~> 1.0.1)
+  - XYMediator/XYPatchHelper (0.0.1):
+    - AFNetworking (~> 2.6.3)
+    - JSPatch (~> 1.0.0)
+    - YYCache (~> 1.0.3)
+  - XYMediator/XYWeex (0.0.1):
+    - weex (~> 0.6.0)
+  - YYCache (1.0.3)
+
+DEPENDENCIES:
+  - XYMediator (from `../`)
+
+EXTERNAL SOURCES:
+  XYMediator:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  Cordova: 9e3e474dc62b9de3ae497093fc7f66157917be74
+  JSPatch: c689ea4dde17441f2f4a95d40dfedb8900c20099
+  LEETheme: 3bdf9a87ce21cb7d856c188f5dbc0a413af99434
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  weex: b5468c0d673be4619cddb97d17713c33428266ac
+  XY_NetWorkClient: 78254b54548dd0708aab832572b7b86f2b75317f
+  XYMediator: e91063217863089fb9121b1cfbb9e4e9e827456c
+  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+
+PODFILE CHECKSUM: d43cf02d259322eaa64693ee3abd33bbaf43466a
+
+COCOAPODS: 1.0.1

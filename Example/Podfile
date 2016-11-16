@@ -1,0 +1,15 @@
+use_frameworks!
+# github地址
+source 'https://github.com/CocoaPods/Specs.git'
+# 私有库地址
+source 'https://github.com/rRun/xy_podSepcs.git'
+
+target 'XYMediator_Example' do
+  pod 'XYMediator', :path => '../'
+
+  target 'XYMediator_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
