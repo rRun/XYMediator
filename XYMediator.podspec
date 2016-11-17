@@ -29,6 +29,8 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '7.0'
+  s.frameworks = 'SystemConfiguration','MobileCoreServices','CFNetwork'
+  s.libraries  = 'z'
 
   # s.source_files = 'XYMediator/Classes/**/*'
   
@@ -42,54 +44,72 @@ Pod::Spec.new do |s|
 
   # 逻辑跳转中间件 - URL路由
   s.subspec 'XYMediatorCore' do |ss|
+
     ss.source_files = 'XYMediator/Classes/XYMediatorCore/**/*.{h,m}'
+
   end
 
   # 热补丁
   s.subspec 'XYPatchHelper' do |ss|
+
     ss.source_files = 'XYMediator/Classes/XYPatchHelper/**/*.{h,m}'
 
     ss.dependency 'YYCache', '~>1.0.3'
     ss.dependency 'JSPatch', '~>1.0.0'
-    ss.dependency 'AFNetworking', '~>2.6.3'
+    ss.dependency 'AFNetworking', '~> 3.1.0'
 
   end
 
   # 日志
   s.subspec 'XYLogger' do |ss|
+
     ss.source_files = 'XYMediator/Classes/XYLogger/**/*.{h,m}'
+
     ss.dependency 'CocoaLumberjack', '~>2.3.0'
 
   end
 
   # weex开发
   s.subspec 'XYWeex' do |ss|
+
     ss.source_files = 'XYMediator/Classes/XYWeex/**/*.{h,m}'
+
     ss.dependency 'weex', '~> 0.6.0'
+
   end
 
   # cordova开发
   s.subspec 'XYCordova' do |ss|
+
     ss.source_files = 'XYMediator/Classes/XYCordova/**/*.{h,m}'
+
     ss.dependency 'Cordova', '~> 4.1.1'
 
   end
 
-  # 界面控制-约束，主题
-  s.subspec 'XYBaseUI' do |ss|
-    ss.source_files = 'XYMediator/Classes/XYBaseUI/**/*.{h,m}'
+  # 基本界面 - UI约束，UI主题,其他
+  s.subspec 'XYBase' do |ss|
+
+    ss.source_files = 'XYMediator/Classes/XYBase/**/*.{h,m}'
+
     ss.dependency 'LEETheme', '~> 1.0.7'
     ss.dependency 'Masonry', '~> 1.0.1'
 
   end
 
   #推送
+
   #定位
+
   #网络
   s.subspec 'XYNetwork' do |ss|
+
     ss.source_files = 'XYMediator/Classes/XYNetwork/**/*.{h,m}'
+
     ss.dependency 'XY_NetWorkClient', '~> 1.0.1'
+
   end
+
   #分享
 
 end

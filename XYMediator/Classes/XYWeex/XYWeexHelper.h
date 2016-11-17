@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "weex/weexSDK.h"
+
 
 @interface XYWeexHelper : NSObject
 

@@ -50,6 +50,7 @@
 -(void)showURLController:(nonnull UIViewController *)controller
       baseViewController:(nullable UIViewController *)baseViewController
                routeMode:(NavigationMode)routeMode{
+    
     if (routeMode == NavigationModeNone) {
         routeMode = NavigationModePush;
     }
@@ -70,7 +71,8 @@
         default:
             break;
     }
-
+    
+    _routeBlock = nil;
 }
 
 
