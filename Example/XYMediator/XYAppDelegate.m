@@ -8,11 +8,19 @@
 
 #import "XYAppDelegate.h"
 
+#import <XYMediator/XYRouter.h>
+#import "XYModuleA.h"
+
 @implementation XYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [XYRouter registerDefaultSchema:@"app"];
+    [XYRouter registerConnector:[XYModuleA new] URLString:@"moduleA"];
+    
+    
     return YES;
 }
 
