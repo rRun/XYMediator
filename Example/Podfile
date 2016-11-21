@@ -8,7 +8,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/rRun/xy_podSepcs.git'
 
 target 'XYMediator_Example' do
-    pod 'XYMediator', :path => '../'
+   pod 'XYMediator', :path => '../'
 
   target 'XYMediator_Tests' do
     inherit! :search_paths

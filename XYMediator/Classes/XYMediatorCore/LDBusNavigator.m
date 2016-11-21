@@ -248,7 +248,7 @@
     if(_routeBlock){
         success = _routeBlock(controller, baseViewController, routeMode);
     }
-
+    _routeBlock = nil;//执行完后释放block
     if (!success) {
         [self showURLController:controller baseViewController:baseViewController routeMode:routeMode];
     }
