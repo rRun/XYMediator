@@ -37,8 +37,8 @@
 
 /* Begin PBXFileReference section */
 		15187D7C54B68DCEA66D9DA8 /* Pods-XYMediator_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYMediator_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-XYMediator_Example/Pods-XYMediator_Example.release.xcconfig"; sourceTree = "<group>"; };
-		15DBC433F13DE2EBB7BEE4DF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		17481F81B51DFA5FD566ACF8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		15DBC433F13DE2EBB7BEE4DF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		17481F81B51DFA5FD566ACF8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* XYMediator_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYMediator_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,7 +64,7 @@
 		B8663152A3C665EADBAD73D9 /* Pods_XYMediator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYMediator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A32C0D7C6245E0A3E2D659 /* Pods-XYMediator_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYMediator_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYMediator_Tests/Pods-XYMediator_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E25858A2DF65230EB0E97B6A /* Pods_XYMediator_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYMediator_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FEF31DA34A687A69408C8561 /* XYMediator.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = XYMediator.podspec; path = ../XYMediator.podspec; sourceTree = "<group>"; };
+		FEF31DA34A687A69408C8561 /* XYMediator.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = XYMediator.podspec; path = ../XYMediator.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = hexy;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 63DD5UWBGN;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -513,6 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 63DD5UWBGN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XYMediator/XYMediator-Prefix.pch";
 				INFOPLIST_FILE = "XYMediator/XYMediator-Info.plist";
@@ -529,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 63DD5UWBGN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XYMediator/XYMediator-Prefix.pch";
 				INFOPLIST_FILE = "XYMediator/XYMediator-Info.plist";

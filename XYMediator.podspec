@@ -66,6 +66,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'XYMediator/Classes/XYLogger/**/*.{h,m}'
 
     ss.dependency 'CocoaLumberjack', '~>2.3.0'
+    ss.dependency 'ZipArchive', '~> 1.4.0'
 
   end
 

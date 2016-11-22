@@ -8,6 +8,10 @@
 
 #import "XYFileLogger.h"
 
+#import "ZipArchive.h"
+
+#import <MessageUI/MessageUI.h>
+
 @implementation XYFileLogger
 #pragma mark - Inititlization
 - (instancetype)init
@@ -58,6 +62,8 @@ static XYFileLogger *sharedManager=nil;
     XYLoggerFormmatter* formatter = [[XYLoggerFormmatter alloc] init];
     [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
     
+    //崩溃日志处理
+    NSSetUncaughtExceptionHandler (&UncaughtExceptionHandler);
 }
 
 #pragma mark - Getters
@@ -75,12 +81,70 @@ static XYFileLogger *sharedManager=nil;
     return _fileLogger;
 }
 
-#pragma mark - 邮件发送
--(void)sendEmail{
+#pragma mark - Email
+-(void)sendEmail:(NSString *)zipPath{
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; //每次启动后都保存一个新的日志文件中
+    NSString *dateStr = [formatter stringFromDate:[NSDate date]];
+    
+    // 邮件服务器
+    MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc] init];
+    // 设置邮件代理
+    [mailCompose setMailComposeDelegate:self];
+    // 设置邮件主题
+    [mailCompose setSubject:[NSString stringWithFormat:@"日志_iOS_%@",dateStr]];
+    // 设置收件人
+    //[mailCompose setToRecipients:@[@"1147626297@qq.com"]];
+    // 设置抄送人
+    //[mailCompose setCcRecipients:@[@"1229436624@qq.com"]];
+    // 设置密抄送
+    //[mailCompose setBccRecipients:@[@"shana_happy@126.com"]];
+    /**
+     *  设置邮件的正文内容
+     */
+    NSString *emailContent = @"iOS日志，日志随邮件附件，请解压后使用！";
+    // 是否为HTML格式
+    [mailCompose setMessageBody:emailContent isHTML:NO];
+    // 如使用HTML格式，则为以下代码
+    //[mailCompose setMessageBody:@"<html><body><p>日志附件如下</p><p>附带为zip，请解压后使用！</p></body></html>" isHTML:YES];
+    /**
+     *  添加附件
+     */
+    
+    NSData *zip = [NSData dataWithContentsOfFile:zipPath];
+    [mailCompose addAttachmentData:zip mimeType:@"zip" fileName:@"日志"];
+    
+    // 弹出邮件发送视图
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:mailCompose animated:YES completion:nil];
 }
 
-#pragma mark - 崩溃日志
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled: // 用户取消编辑
+            NSLog(@"Mail send canceled...");
+            break;
+        case MFMailComposeResultSaved: // 用户保存邮件
+            NSLog(@"Mail saved...");
+            break;
+        case MFMailComposeResultSent: // 用户点击发送
+            NSLog(@"Mail sent...");
+            break;
+        case MFMailComposeResultFailed: // 用户尝试保存或发送邮件失败
+            NSLog(@"Mail send errored: %@...", [error localizedDescription]);
+            break;
+    }
+    
+    // 关闭邮件发送视图
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Crash log
 void UncaughtExceptionHandler(NSException *exception){
     NSArray *arr = [exception callStackSymbols];
     NSString *reason = [exception reason];
@@ -104,36 +168,38 @@ void UncaughtExceptionHandler(NSException *exception){
     NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
 }
 
-// 将NSlog打印信息保存到Document目录下的文件中
-- (void)redirectNSlogToDocumentFolder{
-    //如果已经连接Xcode调试则不输出到文件
-    if(isatty(STDOUT_FILENO)) {
-        return;
-    }
-    
-    UIDevice *device = [UIDevice currentDevice];
-    if([[device model] hasSuffix:@"Simulator"]){ //在模拟器不保存到文件中
-        return;
-    }
-    
-    //将NSlog打印信息保存到Document目录下的Log文件夹下
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Log"];
-    
+#pragma mark - Tool
+/**
+ *  根据路径将文件压缩为zip到指定路径
+ *
+ *  @param sourcePath 压缩文件夹路径
+ *  @param destZipFile存放路径（保存重命名）
+ */
++(void) doZipAtPath:(NSString*)sourcePath to:(NSString*)destZipFile
+{
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL fileExists = [fileManager fileExistsAtPath:logDirectory];
-    if (!fileExists) {
-        [fileManager createDirectoryAtPath:logDirectory  withIntermediateDirectories:YES attributes:nil error:nil];
+    ZipArchive * zipArchive = [ZipArchive new];
+    BOOL isdic;
+    //判断sourcePath下是文件夹还是文件
+    if(![fileManager fileExistsAtPath:sourcePath isDirectory:&isdic])
+        return;//文件不存在，直接返回
+    
+    [zipArchive CreateZipFile2:destZipFile];
+    
+    if (isdic)//文件夹
+    {
+        NSArray *fileList = [fileManager contentsOfDirectoryAtPath:sourcePath error:nil];//文件列表
+        for(NSString *filePath in fileList){
+            NSString *fileName = [filePath lastPathComponent];//取得文件名
+            NSString *path = [sourcePath stringByAppendingString:[NSString stringWithFormat:@"/%@",filePath]];
+            [zipArchive addFileToZip:path newname:fileName];
+        }
+    }else{
+        [zipArchive addFileToZip:sourcePath newname:[sourcePath lastPathComponent]];
     }
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; //每次启动后都保存一个新的日志文件中
-    NSString *dateStr = [formatter stringFromDate:[NSDate date]];
-    NSString *logFilePath = [logDirectory stringByAppendingFormat:@"/%@.log",dateStr];
-    
-    // 将log输入到文件
-    freopen([logFilePath cStringUsingEncoding:NSUTF8StringEncoding], "a+", stdout);
-    freopen([logFilePath cStringUsingEncoding:NSUTF8StringEncoding], "a+", stderr);
+    [zipArchive CloseZipFile2];
 }
+
+
 @end

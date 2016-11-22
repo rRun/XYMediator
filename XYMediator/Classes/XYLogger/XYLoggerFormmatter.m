@@ -41,6 +41,7 @@
     [outputFormatter setDateFormat:format];
     NSString *retStr = [outputFormatter stringFromDate:dateTime];
     return retStr;
+    
 }
 
 @end

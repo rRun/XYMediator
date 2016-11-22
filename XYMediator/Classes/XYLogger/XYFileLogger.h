@@ -17,5 +17,11 @@
 
 +(XYFileLogger *)sharedManager;
 
+//读取日志压缩成zip附件调用邮件发送
 -(void)sendEmail;
+
+//清除日志
+-(void)clearLogs;
+
+
 @end

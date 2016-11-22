@@ -48,6 +48,7 @@ PODS:
     - Cordova (~> 4.1.1)
   - XYMediator/XYLogger (0.0.1):
     - CocoaLumberjack (~> 2.3.0)
+    - ZipArchive (~> 1.4.0)
   - XYMediator/XYMediatorCore (0.0.1)
   - XYMediator/XYNetwork (0.0.1):
     - XY_NetWorkClient (~> 1.0.1)
@@ -58,6 +59,7 @@ PODS:
   - XYMediator/XYWeex (0.0.1):
     - weex (~> 0.6.0)
   - YYCache (1.0.3)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - XYMediator (from `../`)
@@ -76,8 +78,9 @@ SPEC CHECKSUMS:
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   weex: b5468c0d673be4619cddb97d17713c33428266ac
   XY_NetWorkClient: 78254b54548dd0708aab832572b7b86f2b75317f
-  XYMediator: 3f514155c45bc87ae824d986d5a62d7e4e3ac363
+  XYMediator: 3d816f5999f17e6f546ab50acdcf31b3aef22d01
   YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
 PODFILE CHECKSUM: dcd429c24fd6cebc5f4a0c6200521a41217ef3d3
 
