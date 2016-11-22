@@ -23,6 +23,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		A1F3A3101DE2F76600805F07 /* XYModuleA.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F3A30F1DE2F76600805F07 /* XYModuleA.m */; };
+		A1F3A3131DE2F8A000805F07 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F3A3121DE2F8A000805F07 /* AViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		7B9F2A83E194938F66F41E74 /* Pods-XYMediator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYMediator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XYMediator_Tests/Pods-XYMediator_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		902FBD284CD8EBEB3BEFCEC8 /* Pods-XYMediator_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYMediator_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYMediator_Example/Pods-XYMediator_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A1F3A30E1DE2F76600805F07 /* XYModuleA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYModuleA.h; sourceTree = "<group>"; };
+		A1F3A30F1DE2F76600805F07 /* XYModuleA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYModuleA.m; sourceTree = "<group>"; };
+		A1F3A3111DE2F8A000805F07 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		A1F3A3121DE2F8A000805F07 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
 		B8663152A3C665EADBAD73D9 /* Pods_XYMediator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYMediator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A32C0D7C6245E0A3E2D659 /* Pods-XYMediator_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYMediator_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XYMediator_Tests/Pods-XYMediator_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E25858A2DF65230EB0E97B6A /* Pods_XYMediator_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XYMediator_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +136,7 @@
 		6003F593195388D20070C39A /* Example for XYMediator */ = {
 			isa = PBXGroup;
 			children = (
+				A1F3A3091DE2F71800805F07 /* Modules */,
 				6003F59C195388D20070C39A /* XYAppDelegate.h */,
 				6003F59D195388D20070C39A /* XYAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -191,6 +198,49 @@
 				7B9F2A83E194938F66F41E74 /* Pods-XYMediator_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A1F3A3091DE2F71800805F07 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A1F3A30A1DE2F74400805F07 /* ModeluA */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		A1F3A30A1DE2F74400805F07 /* ModeluA */ = {
+			isa = PBXGroup;
+			children = (
+				A1F3A30B1DE2F74400805F07 /* Classes */,
+				A1F3A30C1DE2F74400805F07 /* Resources */,
+				A1F3A30D1DE2F74400805F07 /* UI */,
+			);
+			path = ModeluA;
+			sourceTree = "<group>";
+		};
+		A1F3A30B1DE2F74400805F07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A1F3A30E1DE2F76600805F07 /* XYModuleA.h */,
+				A1F3A30F1DE2F76600805F07 /* XYModuleA.m */,
+				A1F3A3111DE2F8A000805F07 /* AViewController.h */,
+				A1F3A3121DE2F8A000805F07 /* AViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A1F3A30C1DE2F74400805F07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1F3A30D1DE2F74400805F07 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3EAA9252E344372DF521AAB6 /* [CP] Copy Pods Resources */ = {
@@ -383,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -394,7 +444,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* XYAppDelegate.m in Sources */,
+				A1F3A3131DE2F8A000805F07 /* AViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* XYViewController.m in Sources */,
+				A1F3A3101DE2F76600805F07 /* XYModuleA.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

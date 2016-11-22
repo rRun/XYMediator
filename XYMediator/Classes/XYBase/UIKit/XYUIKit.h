@@ -84,7 +84,7 @@
 
 #import "UIResponder+Chain.h"
 #import "UIResponder+FirstResponder.h"
-#import "UIResponder+UIAdapt.h
+#import "UIResponder+UIAdapt.h"
 
 #import "UIScreen+Frame.h"
 

@@ -7,6 +7,7 @@
 //
 
 #import "XYViewController.h"
+#import <XYMediator/XYRouter.h>
 
 @interface XYViewController ()
 
@@ -20,6 +21,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [XYRouter openURL:@"app://modulea"];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
