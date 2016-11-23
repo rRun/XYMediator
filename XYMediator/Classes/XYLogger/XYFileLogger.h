@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XYCocoaLumberJack.h"
+#import <CocoaLumberJack/CocoaLumberJack.h>
 #import "XYLoggerFormmatter.h"
+
 
 //日志在本地的位置：~/Library/Caches/Logs
 @interface XYFileLogger : NSObject

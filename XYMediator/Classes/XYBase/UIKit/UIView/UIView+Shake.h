@@ -7,9 +7,9 @@
 //  https://github.com/andreamazz/UIView-Shake
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-typedef NS_ENUM(NSInteger, ShakeDirection) {
-    ShakeDirectionHorizontal = 0,
-    ShakeDirectionVertical
+typedef NS_ENUM(NSInteger, ViewShakeDirection) {
+    ViewShakeDirectionHorizontal = 0,
+    ViewShakeDirectionVertical
 };
 
 @interface UIView (Shake)
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, ShakeDirection) {
  * @param interval The duration of one shake
  * @param direction of the shake
  */
-- (void)shake:(int)times withDelta:(CGFloat)delta speed:(NSTimeInterval)interval shakeDirection:(ShakeDirection)shakeDirection;
+- (void)shake:(int)times withDelta:(CGFloat)delta speed:(NSTimeInterval)interval shakeDirection:(ViewShakeDirection)shakeDirection;
 
 /** Shake the UIView at a custom speed
  *
@@ -86,6 +86,6 @@ typedef NS_ENUM(NSInteger, ShakeDirection) {
  * @param direction of the shake
  * @param completion to be called when the view is done shaking
  */
-- (void)shake:(int)times withDelta:(CGFloat)delta speed:(NSTimeInterval)interval shakeDirection:(ShakeDirection)shakeDirection completion:(void(^)(void))completion;
+- (void)shake:(int)times withDelta:(CGFloat)delta speed:(NSTimeInterval)interval shakeDirection:(ViewShakeDirection)shakeDirection completion:(void(^)(void))completion;
 
 @end

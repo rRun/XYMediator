@@ -8,8 +8,8 @@
 
 #import "XYAppDelegate.h"
 
-#import <XYMediator/XYRouter.h>
 #import "XYModuleA.h"
+#import "XYFileLogger.h"
 
 @implementation XYAppDelegate
 
@@ -18,8 +18,15 @@
     // Override point for customization after application launch.
     
     [XYRouter registerDefaultSchema:@"app"];
-    [XYRouter registerConnector:[XYModuleA new] URLString:@"moduleA"];
+    [XYRouter registerConnector:[XYModuleA new] URLString:@"/profile/:profile_id"];
     
+    static const NSInteger ddLogLevel = DDLogLevelAll;// 定义日志级别
+    [XYFileLogger sharedManager];
+    
+    DDLogError(@"错误信息"); // 红色
+    DDLogWarn(@"警告"); // 橙色
+    DDLogInfo(@"提示信息"); // 默认是黑色
+    DDLogVerbose(@"详细信息"); // 默认是黑色
     
     return YES;
 }

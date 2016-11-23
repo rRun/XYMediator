@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DDLog.h"
+#import <CocoaLumberJack/CocoaLumberJack.h>
 
 
 @interface XYLoggerFormmatter : NSObject

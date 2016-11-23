@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+#import "XYRouter.h"
+
 @interface XYViewController : UIViewController
 
 @end

@@ -6,7 +6,9 @@
 //  Copyright (c) 2016 hexy. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
+
+#import "XYRouter.h"
 
 @interface XYAppDelegate : UIResponder <UIApplicationDelegate>
 

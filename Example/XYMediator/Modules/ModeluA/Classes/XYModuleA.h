@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <XYMediator/XYConnectorPrt.h>
+//#import <XYMediator/XYConnectorPrt.h>
+#import "XYConnectorPrt.h"
 
 @interface XYModuleA : NSObject<XYConnectorPrt>
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 hexy. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 #import "XYAppDelegate.h"
 
 int main(int argc, char * argv[])

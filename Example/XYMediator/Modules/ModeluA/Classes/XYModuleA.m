@@ -16,7 +16,7 @@
  * 当前业务组件可导航的URL询问判断
  */
 -(BOOL)canOpenURL:(nonnull NSURL *)URL{
-    if ([URL.host isEqualToString:@"modulea"]) {
+    if ([URL.host isEqualToString:@"profile"]) {
         return YES;
     }
     return NO;
@@ -34,7 +34,7 @@
  (4) [UIViewController paramsError]的实例，参数错误，无法导航;
  */
 - (nullable UIViewController *)connectToOpenURL:(nonnull NSURL *)URL params:(nullable NSDictionary *)params{
-    if ([URL.host isEqualToString:@"modulea"]) {
+    if ([URL.host isEqualToString:@"profile"]) {
         AViewController *VC = [AViewController new];
         VC.view.backgroundColor = [UIColor redColor];
         return VC;

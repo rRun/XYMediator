@@ -31,10 +31,11 @@
 #pragma mark - 页面跳转接口
 
 //判断某个URL能否导航
-+(BOOL)canRouteURL:(nonnull NSURL *)URL{
++(BOOL)canRouteURL:(nonnull NSString *)URL{
     id connector = [[XYURLMediatorCore sharedRouter] instanceWithRouteURL:URL];
     if (connector != nil && [connector respondsToSelector:@selector(canOpenURL:)]) {
-        if ([connector canOpenURL:URL]) {
+        NSURL *url = [NSURL URLWithString:URL];
+        if ([connector canOpenURL:url]) {
             return YES;
         }
         return NO;
@@ -53,16 +54,24 @@
     return [self openURL:URL withParameters:nil withType:mode animated:NO];
 }
 +(BOOL)openURL:(NSString *)URL withParameters:(nullable NSDictionary *)params withType:(NavigationMode)mode animated:(BOOL)animated {
-    if (![XYRouter canRouteURL:URL]) {
-        return NO;
-    }
+    //if (![XYRouter canRouteURL:URL]) {
+     //   return NO;
+    //}
     BOOL success = NO;
-    id connector = [[XYURLMediatorCore sharedRouter] instanceWithRouteURL:URL];
+    NSDictionary *parsedParameters = nil;
+    id connector = [[XYURLMediatorCore sharedRouter] instanceWithRouteURL:URL parsedParameters:&parsedParameters];
     
-    NSMutableDictionary *userParameter = [self parseParmetersWithUrl:URL Parameters:params];
+    NSMutableDictionary *tempDic = [NSMutableDictionary new];
+    [tempDic setDictionary:params];
+    [tempDic setDictionary:parsedParameters];
+    
+    if (mode != NavigationModeNone) {
+        [tempDic setValue:[NSNumber numberWithInt:mode] forKey:kLDRouteModeKey];
+    }
 
     if (connector != nil && [connector respondsToSelector:@selector(connectToOpenURL:params:)]) {
-        UIViewController *controller = [connector connectToOpenURL:URL params:userParameter];
+        NSURL *url = [NSURL URLWithString:URL];
+        UIViewController *controller = [connector connectToOpenURL:url params:tempDic];
         if (!controller) {
             success = NO;
         }
@@ -74,14 +83,14 @@
             } else {
                 success = NO;
 #if DEBUG
-                [tipController showDebugTipController:URL withParameters:params];
+                [tipController showDebugTipController:URL withParameters:tempDic];
                 success = YES;
 #endif
             }
         } else if ([controller class] == [UIViewController class]){
             success = YES;
         } else {
-            [[LDBusNavigator navigator] hookShowURLController:controller baseViewController:params[kLDRouteViewControllerKey] routeMode:params[kLDRouteModeKey]?[params[kLDRouteModeKey] intValue]:NavigationModePush];
+            [[LDBusNavigator navigator] hookShowURLController:controller baseViewController:tempDic[kLDRouteViewControllerKey] routeMode:tempDic[kLDRouteModeKey]?[tempDic[kLDRouteModeKey] intValue]:NavigationModePush];
             success = YES;
         }
         
@@ -112,7 +121,7 @@
 +(nullable UIViewController *)viewControllerForURL:(nonnull NSURL *)URL withParameters:(nullable NSDictionary *)params{
     
     UIViewController *returnObj = nil;
-  
+    
     id connector = [[XYURLMediatorCore sharedRouter] instanceWithRouteURL:URL];
     
     NSMutableDictionary *userParameter = [self parseParmetersWithUrl:URL Parameters:params];

@@ -7,7 +7,8 @@
 //
 
 #import "XYViewController.h"
-#import <XYMediator/XYRouter.h>
+
+#import "XYAppDelegate.h"
 
 @interface XYViewController ()
 
@@ -22,12 +23,15 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [XYRouter openURL:@"app://modulea"];
+   // [XYRouter openURL:@"app://modulea"];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)didJump:(id)sender {
+    [XYRouter openURL:@"app://profile/123"];
 }
 
 @end
