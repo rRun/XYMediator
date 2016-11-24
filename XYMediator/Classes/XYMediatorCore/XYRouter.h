@@ -7,9 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XYConnectorPrt.h"
 
+#import "XYConnectorPrt.h"
 #import "LDBusNavigator.h"
+#import "UIViewController+NavigationTip.h"
+
+#import "XYModuleManager.h"
+#import "XYURLPath.h"
+#import "XYURLMediatorCore.h"
+#import "LDBusMediatorTipViewController.h"
+
+
+#define XY_EXPORT_MODULE(url) \
++ (void)load { [XYRouter registerConnector:self URLString:url]]; }
 
 static NSString *__nonnull const kLDRouteViewControllerKey = @"LDRouteViewController";
 static NSString *__nonnull const kLDRouteModeKey = @"kLDRouteType";
@@ -24,6 +34,14 @@ static NSString *__nonnull const kLDRouteModeKey = @"kLDRouteType";
 
 //connector自load过程中，注册自己
 +(void)registerConnector:(nonnull id<XYConnectorPrt>)connector URLString:(NSString * _Nonnull)urlStr;
+
+//加载本地配置
++(void)loadLocalModulesWithPath:(NSString *)path;
+//网络添加
++(void)loadNetModule:(NSArray *)modules;
+
+//获取完module数组后，注册组件
++(void)registedAllModules;
 
 
 #pragma mark - 页面跳转接口

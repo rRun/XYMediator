@@ -7,10 +7,7 @@
 //
 
 #import "XYRouter.h"
-#import "XYURLPath.h"
-#import "XYURLMediatorCore.h"
-#import "LDBusMediatorTipViewController.h"
-#import "UIViewController+NavigationTip.h"
+
 
 
 @implementation XYRouter
@@ -25,9 +22,53 @@
 
 //connector自load过程中，注册自己
 +(void)registerConnector:(nonnull id<XYConnectorPrt>)connector URLString:(NSString *)urlStr{
-    [[XYURLMediatorCore sharedRouter] registerURL:urlStr forClass:[connector class]];
+    XYModule *module = [XYModule new];
+    module.name = NSStringFromClass([connector class]);
+    module.level = 2;
+    module.url = urlStr;
+    
+    [[XYModuleManager sharedManager] addModule:module];
+    
+    if ([[XYModuleManager sharedManager].BHModules containsObject:module]) {
+        [[XYModuleManager sharedManager] registedModule:module];
+    }
+    
 }
 
+//加载本地配置
++(void)loadLocalModulesWithPath:(NSString *)path{
+    if (!path) {
+        [XYModuleManager sharedManager].modulesConfigFilename = @"XYMediator.bundle/XYRoute";
+    }else{
+        [XYModuleManager sharedManager].modulesConfigFilename = path;
+    }
+    [[XYModuleManager sharedManager]loadLocalModules];
+}
+//网络添加
++(void)loadNetModule:(NSArray *)modules{
+    if (!modules) {
+        return;
+    }
+    
+    [modules enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSNumber *module1Level = (NSNumber *)[obj objectForKey:kModuleInfoLevelKey];
+        NSString *classStr = [obj objectForKey:kModuleInfoNameKey];
+        NSString *url = [obj objectForKey:kModuleInfoUrlKey];
+        
+        XYModule *module = [XYModule new];
+        module.name = classStr;
+        module.level = [module1Level intValue];
+        module.url = url;
+        
+        [[XYModuleManager sharedManager] addModule:module];
+        
+    }];
+}
+
+//获取完module数组后，注册组件
++(void)registedAllModules{
+    [[XYModuleManager sharedManager]registedAllModules];
+}
 #pragma mark - 页面跳转接口
 
 //判断某个URL能否导航
